@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.12.10 on win32)" generated="2025-10-06T21:55:28.351827" rpa="false" schemaversion="5">
+<suite id="s1" name="User" source="c:\Users\celso\Estudo\robot_courses\api\tests\user.robot">
+<test id="s1-t1" name="Scenario: Creating an user" line="6">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-10-06T21:55:28.430635" level="INFO">${user} = {'nome': 'NomeQualquer33', 'email': 'TestenoiteNomequalquer33@mailinator.com', 'password': 'Teste@12345', 'administrador': 'false'}</msg>
+<var>${user}</var>
+<arg>nome=NomeQualquer33</arg>
+<arg>email=TestenoiteNomequalquer33@mailinator.com</arg>
+<arg>password=Teste@12345</arg>
+<arg>administrador=false</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-10-06T21:55:28.430134" elapsed="0.002007"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-10-06T21:55:28.987291" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '131', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "NomeQualquer33", "email": "TestenoiteNomequalquer33@mailinator.com", "password": "Teste@12345", "administrador": "false"}' 
+ </msg>
+<msg time="2025-10-06T21:55:28.987790" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=201, reason=Created 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'f4f0ae43abce0bccc26bfbfdda04e006', 'date': 'Tue, 07 Oct 2025 00:55:28 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "4vIp6eSB2ItX1MIx"
+} 
+ </msg>
+<msg time="2025-10-06T21:55:28.988291" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>url=https://serverest.dev/usuarios</arg>
+<arg>json=${USER}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-10-06T21:55:28.432141" elapsed="0.556150"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-10-06T21:55:28.989291" elapsed="0.003004"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${response.json()['message']}</arg>
+<arg>Cadastro realizado com sucesso</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-10-06T21:55:28.992801" elapsed="0.001000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-10-06T21:55:28.994808" level="INFO">Length is 16.</msg>
+<arg>${response.json()['_id']}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-10-06T21:55:28.994301" elapsed="0.000507"/>
+</kw>
+<status status="PASS" start="2025-10-06T21:55:28.429147" elapsed="0.568159"/>
+</test>
+<status status="PASS" start="2025-10-06T21:55:28.355353" elapsed="0.642953"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="User" id="s1" pass="1" fail="0" skip="0">User</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
