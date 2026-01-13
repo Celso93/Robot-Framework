@@ -1,14 +1,13 @@
 *** Settings ***
 Library    RequestsLibrary
-Library    Collections
 Library    FakerLibrary
+Resource    ../resources/pages/usuarios.robot
 
-*** Variables ***
-${API_URL}    http://localhost:3000
+Test Setup    Create Session    serverest    http://localhost:3000
 
 *** Test Cases ***
 Scenario: Creating an user successfully
-    ${email}   FakerLibrary.Email
+    ${email}       FakerLibrary.Email
     ${response}    Create User    status=201    email=${email}
 
     Should Be Equal        ${response.json()['message']}    Cadastro realizado com sucesso
@@ -16,32 +15,18 @@ Scenario: Creating an user successfully
     Clear User By Id       ${response.json()['_id']}
 
 Scenario: Creating an user with existing email
-    ${response_new_user}    Create User    status=201
-    ${response_same_user}   Create User    status=400
+    ${email}                   FakerLibrary.Email
+    ${response_new_user}    Create User    status=201    email=${email}
+    ${response_same_user}   Create User    status=400    email=${email}
 
     Should Be Equal     ${response_same_user.json()['message']}    Este email já está sendo usado
     Clear User By Id    ${response_new_user.json()['_id']}
 
-*** Keywords ***
-Create User
-    [Arguments]   ${status}
-    ...           ${email}=teste1234432423@mail.com
+Scenario: Searching for a user by id
+    ${email}                FakerLibrary.Email
+    ${response_new_user}    Create User    status=201    email=${email}
+    ${user_response}        Search User By Id    ${response_new_user.json()['_id']}    status=200
 
-    ${nome}    FakerLibrary.Name
-    ${user}    Create Dictionary
-    ...    nome=${nome}
-    ...    email=${email}
-    ...    password=Teste@12345
-    ...    administrador=false
-
-    ${new_user}    POST
-    ...            url=${API_URL}/usuarios
-    ...            json=${user}
-    ...            expected_status=${status}
-    Return From Keyword    ${new_user}
-
-Clear User By Id
-    [Arguments]    ${user_id}
-    DELETE    ${API_URL}/usuarios/${user_id}        
-    ...       expected_status=200
-    Log To Console    User with id ${user_id} deleted
+    Should Be Equal     ${user_response.json()['_id']}    ${response_new_user.json()['_id']}
+    Should Be Equal     ${email}    ${user_response.json()['email']}
+    Clear User By Id    ${response_new_user.json()['_id']}

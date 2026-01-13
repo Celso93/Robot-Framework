@@ -17,7 +17,6 @@ https://robotcourses.substack.com/p/estrutura-de-secao-e-sintaxe-de-arquivos
 https://front.serverest.dev/login
 
 # Anotacoes
-Git, Github, Python
 venv (Nativo do Python): 
 - Simples
 - Dependente requirements.txt (atualizado manualmente)
@@ -40,3 +39,20 @@ poetry add robotframework-requests
 
 On session keywords
 No session (Sessionless) keywords
+
+[Aula 5]
+Estrutura de projetos
+
+Separation Of Concerns (SoC)
+    Padrao de design de projeto
+    Dividir o sistema em parte menores
+    Suite de teste deve estar separado da logica de teste
+    Suite de teste (Tests): Negocio/funcionalidade 
+    Logica de teste (Resources): Como vou fazer uma sessao, headers, outros.
+        ex:
+        Resource
+        --connections
+        --data
+        --routes
+        --contracts
+
