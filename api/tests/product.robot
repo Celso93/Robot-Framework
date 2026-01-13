@@ -56,6 +56,7 @@ Scenario: Creating a product successfully
     DELETE On Session
     ...            serverest
     ...            /produtos/${new_product.json()['_id']}
+    ...            headers=${meus_headers}
     ...            expected_status=200
     Log To Console    Product with id ${new_product.json()['_id']} deleted
 

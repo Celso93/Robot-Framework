@@ -16,6 +16,8 @@ https://robotcourses.substack.com/p/estilo-de-especificacao-de-testes
 https://robotcourses.substack.com/p/estrutura-de-secao-e-sintaxe-de-arquivos
 https://front.serverest.dev/login
 
+npx serverest@latest
+
 # Anotacoes
 venv (Nativo do Python): 
 - Simples
