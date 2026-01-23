@@ -1,7 +1,7 @@
 *** Settings ***
 Library    RequestsLibrary
 Library    FakerLibrary
-Resource    ../resources/pages/usuarios.robot
+Resource    ../resources/pages/usuarios.resource
 
 Test Setup    Create Session    serverest    http://localhost:3000
 
