@@ -1,5 +1,4 @@
 from robot.api.deco import keyword
-# importar o decorator do robot framework
 
 class contracts:
 
@@ -13,4 +12,13 @@ class contracts:
             "email": login_email,
             "password": login_password
         }
-    
+
+    @keyword('Contract Create User')
+    def create_user(self, email, administrador):
+
+        return {
+            "nome": "Teste Robot Framework",
+            "email": email,
+            "password": "Teste@12345",
+            "administrador": administrador
+        }

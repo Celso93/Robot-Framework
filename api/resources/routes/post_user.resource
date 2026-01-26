@@ -1,6 +1,6 @@
 *** Settings ***
 Library    RequestsLibrary
-Resource   ../contracts/post_user.resource
+Library    contracts
 
 *** Keywords ***
 Create User
