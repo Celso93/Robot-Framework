@@ -22,3 +22,12 @@ class contracts:
             "password": "Teste@12345",
             "administrador": administrador
         }
+
+    @keyword('Contract Create Product')
+    def create_product(self, nome):
+        return {
+            "nome": nome,
+            "preco": 30,
+            "descricao": "Produto de teste",
+            "quantidade": 100
+        }

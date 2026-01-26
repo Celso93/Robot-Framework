@@ -19,7 +19,16 @@ Post Login
     ...            json=${payload}
     ...            expected_status=${expected_status}
 
+    IF    ${response.status_code} == ${200}
+        ${header}  Create Dictionary   Authorization=${response.json()['authorization']}
+    
+        # Token é compartilhado dentro da sessions, não preciso passar novamente em outras chamada
+        Update Session    serverest
+        ...  headers=${header} 
+    END
+
     RETURN       ${response}
+
 
 Assert POST Login
     [Arguments]    ${response}    ${message}
@@ -29,3 +38,4 @@ Assert POST Login
     IF    ${response.status_code} == ${200}
         Should Not Be Empty    ${response.json()['authorization']}
     END
+

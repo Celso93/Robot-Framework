@@ -15,6 +15,7 @@ https://marketsquare.github.io/robotframework-requests/doc/RequestsLibrary.html
 https://robotcourses.substack.com/p/estilo-de-especificacao-de-testes
 https://robotcourses.substack.com/p/estrutura-de-secao-e-sintaxe-de-arquivos
 https://front.serverest.dev/login
+https://github.com/robotcourses/robotcourses-api
 
 npx serverest@latest
 
@@ -60,3 +61,5 @@ Separation Of Concerns (SoC)
 
 
 robot -v ENV:local ./tests/
+
+ep7 27:30
