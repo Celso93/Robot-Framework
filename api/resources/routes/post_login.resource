@@ -1,4 +1,5 @@
 *** Settings ***
+# Library    ../contracts
 Library    RequestsLibrary
 Library    FakerLibrary
 Resource   ../contracts/post_login.resource

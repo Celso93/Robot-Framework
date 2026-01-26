@@ -1,11 +1,14 @@
 *** Settings ***
 Library    RequestsLibrary
+Variables  env.yaml
 
+*** Variables ***
+${ENV}    local
 
 *** Keywords ***
 Create ServeRest Session
 
     Create Session    
     ...    alias=serverest
-    ...    url=http://localhost:3000
+    ...    url=${serve_rest.${ENV}.url}
     ...    disable_warnings=True
