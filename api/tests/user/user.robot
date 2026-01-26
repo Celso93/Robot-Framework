@@ -1,9 +1,9 @@
 *** Settings ***
-Library    RequestsLibrary
+Resource    ../../resources/connections/session.resource
+Resource    ../../resources/routes/post_user.resource
 Library    FakerLibrary
-Resource    ../resources/pages/usuarios.resource
 
-Test Setup    Create Session    serverest    http://localhost:3000
+Test Setup    Create ServeRest Session
 
 *** Test Cases ***
 Scenario: Creating an user successfully

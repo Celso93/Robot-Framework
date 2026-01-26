@@ -2,7 +2,6 @@
 Library    RequestsLibrary
 Library    Collections
 Library    FakerLibrary
-Resource    ../resources/pages/usuarios.robot
 
 *** Variables ***
 ${API_URL}    http://localhost:3000

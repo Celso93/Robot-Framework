@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    ../../resources/connections/session.resource
-Resource    ../resources/routes/post_login.resource
-Resource    ../resources/routes/post_user.resource
+Resource    ../../resources/routes/post_login.resource
+Resource    ../../resources/routes/post_user.resource
 Library     FakerLibrary
 
 *** Test Cases ***

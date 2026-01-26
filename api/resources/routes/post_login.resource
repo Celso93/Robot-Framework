@@ -2,8 +2,6 @@
 Library    contracts
 Library    RequestsLibrary
 Library    FakerLibrary
-# Resource   ../contracts/post_login.resource
-
 
 *** Keywords ***
 Post Login

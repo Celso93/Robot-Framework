@@ -19,3 +19,22 @@ Create User
     ...            expected_status=${status}
 
     RETURN   ${response}
+
+Search User By Id
+    [Arguments]    ${user_id}    
+    ...            ${status}=200
+    ${response}    GET On Session
+    ...            serverest
+    ...            /usuarios/${user_id}
+    ...            expected_status=${status}
+    Return From Keyword    ${response}
+
+
+Clear User By Id
+    [Arguments]    ${user_id}
+    DELETE On Session
+    ...            serverest
+    ...            /usuarios/${user_id}
+    ...            expected_status=200
+
+    Log To Console    User with id ${user_id} deleted

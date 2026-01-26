@@ -58,4 +58,5 @@ Separation Of Concerns (SoC)
         --routes
         --contracts
 
-18m ep6
+
+robot -v ENV:local ./tests/
